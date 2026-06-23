@@ -3,18 +3,7 @@
 
 DLL mod for Mewgenics that acts as dependency framework for fully customizable stray cat mods, also adding customizable in-game stray spawning behavior!
 
-The framework can also change how stray spawning behaves globally. Depending on the framework config, it can add extra cats after the game creates a normal stray event, replace each game-created stray candidate with a framework-controlled candidate, mix custom cats with native base-game strays, or spawn cats manually for testing/debugging purposes!
-
-## Important note about disabling custom stray mods
-
-If a custom stray mod is disabled in Mewtator, its cat definitions will still be picked up by Custom Stray Framework if its files are still present in the mods folder. To actually disable a custom stray definition, set the cat's `Enabled=0` in that mod's `custom_strays.ini`. Alternatively you can safely delete the mod folder!
-
-Example:
-
-```ini
-[Cat:Example_Felix]
-Enabled=0
-```
+The framework can also change how stray spawning behaves. Depending on the framework config, it can add extra cats after the game creates a normal stray event, replace each game-created stray candidate with a framework-controlled candidate, mix custom cats with native base-game strays, or spawn cats manually for testing/debugging purposes!
 
 ## Installation/Folder layout
 
@@ -38,6 +27,17 @@ mods/
 Custom Stray Framework scans every sibling folder beside it in the same parent `mods/` directory.
 
 Any folder with a `custom_strays.ini` file can contribute cats to the shared custom stray pool. This means multiple separate stray mods can be installed at the same time, and each one can add its own `[Cat:...]` sections!
+
+## Important note about disabling custom stray mods
+
+If a custom stray mod is disabled in Mewtator, its cat definitions will still be picked up by Custom Stray Framework if its files are still present in the mods folder. To actually disable a custom stray definition, set the cat's `Enabled=0` in that mod's `custom_strays.ini`. Alternatively you can safely delete the mod folder!
+
+Example:
+
+```ini
+[Cat:Example_Felix]
+Enabled=0
+```
 
 ## How it works
 
