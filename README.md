@@ -1,7 +1,7 @@
 # Custom Stray Framework
 <img width="500" height="500" alt="preview" src="https://github.com/user-attachments/assets/dde8fd76-00ab-4c7a-9ee8-361b83747099" />
 
-DLL mod for Mewgenics that acts as dependency framework for fully customizable stray cat mods, also adding customizable in-game stray spawning behavior!
+DLL mod for Mewgenics that acts as dependency framework for fully customizable stray cat mods, also adds customizable in-game stray spawning behavior!
 
 The framework can also change how stray spawning behaves. Depending on the framework config, it can add extra cats after the game creates a normal stray event, replace each game-created stray candidate with a framework-controlled candidate, mix custom cats with native base-game strays, or spawn cats manually for testing/debugging purposes!
 
