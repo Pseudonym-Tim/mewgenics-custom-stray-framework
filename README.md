@@ -5,6 +5,12 @@ DLL mod for Mewgenics that acts as dependency framework for fully customizable s
 
 The framework can also change how stray spawning behaves. Depending on the framework config, it can add extra cats after the game creates a normal stray event, replace each game-created stray candidate with a framework-controlled candidate, mix custom cats with native base-game strays, or spawn cats manually for testing/debugging purposes!
 
+## Example custom stray mod
+
+An example custom stray cat mod is available as a downloadable file in the **Releases** section.
+
+Use it as a reference for the expected folder layout, `custom_strays.ini` format, custom cat appearance data, and localization files when creating your own custom stray mod.
+
 ## Installation/Folder layout
 
 A typical install of the framework and custom cat mods looks like this:
