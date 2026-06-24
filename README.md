@@ -5,12 +5,6 @@ A DLL dependency framework for fully customizable stray cat mods. It lets you ad
 
 In addition to the ability to add/load fully customizable stray cats, the framework can additionally change how stray spawning behaves. Depending on the framework config, it can add extra cats after the game creates a normal stray event, replace each game-created stray candidate with a framework-controlled candidate, mix custom cats with native base-game strays, or spawn cats manually for testing/debugging purposes!
 
-## Example custom stray mod
-
-An example custom stray cat mod is available as a downloadable file in the **Releases** section!
-
-Use it as a reference for the expected folder layout, `custom_strays.ini` format, custom cat appearance data, and localization files when creating your own custom stray mod.
-
 ## Installation/Folder layout
 
 A typical install of the framework and custom cat mods looks like this:
@@ -307,7 +301,12 @@ Passive1Level=0
 
 ## Tutorial: making your own custom stray mod
 
-This tutorial creates a standalone cat-pack mod that depends on Custom Stray Framework.
+This tutorial shows you how to create a standalone stray cat mod that depends on Custom Stray Framework.
+
+### Example custom stray mod/tutorial
+
+NOTE: An example custom stray cat mod is available as a downloadable file in the **Releases** section!
+Use it as a reference for the expected folder layout, `custom_strays.ini` format, custom cat appearance data, and localization files when creating your own custom stray mod.
 
 ### 1. Create your mod folder
 
