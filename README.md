@@ -1,13 +1,13 @@
 # Custom Stray Framework
 <img width="500" height="500" alt="preview" src="https://github.com/user-attachments/assets/dde8fd76-00ab-4c7a-9ee8-361b83747099" />
 
-DLL mod for Mewgenics that acts as dependency framework for fully customizable stray cat mods, also adds customizable in-game stray spawning behavior!
+A DLL dependency framework for fully customizable stray cat mods. It lets you add your own stray cats, modify nearly every aspect of them, and have the game spawn them naturally. It also adds configurable in-game stray spawning behavior!
 
-The framework can also change how stray spawning behaves. Depending on the framework config, it can add extra cats after the game creates a normal stray event, replace each game-created stray candidate with a framework-controlled candidate, mix custom cats with native base-game strays, or spawn cats manually for testing/debugging purposes!
+In addition to the ability to add/load fully customizable stray cats, the framework can additionally change how stray spawning behaves. Depending on the framework config, it can add extra cats after the game creates a normal stray event, replace each game-created stray candidate with a framework-controlled candidate, mix custom cats with native base-game strays, or spawn cats manually for testing/debugging purposes!
 
 ## Example custom stray mod
 
-An example custom stray cat mod is available as a downloadable file in the **Releases** section.
+An example custom stray cat mod is available as a downloadable file in the **Releases** section!
 
 Use it as a reference for the expected folder layout, `custom_strays.ini` format, custom cat appearance data, and localization files when creating your own custom stray mod.
 
@@ -132,9 +132,9 @@ CustomExtraWeight=50
 
 Supported values:
 
-- `Mixed` - Uses both base-game strays and custom stray definitions.
-- `CustomOnly` - Only uses cats from `custom_strays.ini` files.
-- `NativeOnly` - Only uses base-game stray cats.
+- `Mixed` - uses both base-game strays and custom stray definitions.
+- `CustomOnly` - only uses cats from `custom_strays.ini` files.
+- `NativeOnly` - only uses base-game stray cats.
 
 When `CatPool=Mixed`, `NativeExtraWeight` and `CustomExtraWeight` decide how often the framework chooses native versus custom cats.
 
@@ -200,7 +200,7 @@ SafeMode=0
 - `Enabled`: `1` loads this cat, `0` disables it.
 - `Weight`: weighted random selection value. Higher means more common.
 - `CustomCatName`: key from `data/custom_cats.gon.append`.
-- `LocalizationKey`: key from `data/text/combined.csv.append`; use `none` to skip localization lookup.
+- `LocalizationKey`: key from `data/text/combined.csv.append`, use `none` to skip localization lookup.
 - `InlineNameFallback`: fallback display name if localization fails or is disabled.
 - `SafeMode`: if `1`, the framework applies the visual custom-cat template and fallback name but skips optional stats, abilities, passives, and personality writes. Use this for debugging.
 
@@ -331,9 +331,13 @@ MyCustomStrays/
       combined.csv.append
 ```
 
-### 2. Add the custom cat appearance
+### 2. Add the custom cat appearance/voice
 
-In `data/custom_cats.gon.append`, add a custom cat template. The key you choose here is what `CustomCatName` must point to in `custom_strays.ini`.
+Add your custom cat template in `data/custom_cats.gon.append`. The template key you choose here is the same name that `CustomCatName` must point to in `custom_strays.ini`. 
+
+The easiest way to create cat at the time of writing this is by using [Mewgenics Kitty Editor](https://mewgenics.kittyeditor.com/), which lets you visually create a cat and obtain its appearance ID info. It is not perfect (cat color palettes are outdated at the time of writing this for example), but it is still a useful visual reference when setting up your cat's appearance.
+
+For cat voices, I recommend launching the game in dev mode and using the **Singing Cat Test** to experiment with voice presets and pitches. Dev mode can be enabled either through **Mewtator's launch options** by turning on dev mode, or through Steam by right-clicking **Mewgenics** -> **Properties** -> **Launch Options** and adding `-dev_mode true`. You can also create your own completely new custom cat voices with [MewVoice](https://mewvoice.com/).
 
 Example:
 
@@ -567,7 +571,7 @@ NativeStrayMode=AppendExtra
 Enabled=0
 ```
 
-Minimum matching localization file:
+Minimum localization file:
 
 ```csv
 FELIX_NAME,"Felix"
