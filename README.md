@@ -375,7 +375,7 @@ The important part is the template name:
 Felix {
 ```
 
-That means the matching stray definition should use:
+That means the matching stray definition in the .ini should use:
 
 ```ini
 CustomCatName=Felix
