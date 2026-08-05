@@ -299,7 +299,7 @@ Passive1Level=0
 - `Passive0Level` and `Passive1Level` set the matching passive's upgrade level.
 - Leave the passive name blank for no passive in that slot.
 
-## Tutorial: making your own custom stray mod
+## Tutorial: Making your own custom stray mod
 
 This tutorial shows you how to create a standalone stray cat mod that depends on Custom Stray Framework.
 
@@ -334,9 +334,11 @@ MyCustomStrays/
 
 Add your custom cat template in `data/custom_cats.gon.append`. The template key you choose here is the same name that `CustomCatName` must point to in `custom_strays.ini`. 
 
-The easiest way to create cat at the time of writing this is by using [Mewgenics Kitty Editor](https://mewgenics.kittyeditor.com/), which lets you visually create a cat and obtain its appearance ID info. It is not perfect (cat color palettes are outdated at the time of writing this for example), but it is still a useful visual reference when setting up your cat's appearance.
+The best/easiest way to create cats at the time of writing this is by using [Catstructor](https://www.nexusmods.com/mewgenics/mods/465), which lets you visually create a cat and obtain its `.gon` data. Alternatively, you can also use [Mewgenics Kitty Editor](https://mewgenics.kittyeditor.com/), but at the time of writing it's pretty restrictive, unsupported, and you'll have to intuit some things.
 
-For cat voices, I recommend launching the game in dev mode and using the **Singing Cat Test** to experiment with voice presets and pitches. Dev mode can be enabled either through **Mewtator's launch options** by turning on dev mode, or through Steam by right-clicking **Mewgenics** -> **Properties** -> **Launch Options** and adding `-dev_mode true`. You can also create your own completely new custom cat voices with [MewVoice](https://mewvoice.com/).
+For cat voices, I recommend launching the game in dev mode and using the **Singing Cat Test** to experiment with voice presets and pitches. Dev mode can be enabled either through **Mewtator's launch options** by turning on dev mode, or through Steam by right-clicking **Mewgenics** -> **Properties** -> **Launch Options** and adding `-dev_mode true`. 
+
+You can also create your own completely new custom cat voices with [MewVoice](https://mewvoice.com/).
 
 Example:
 
