@@ -475,6 +475,10 @@ Passive0=FirstImpression
 Passive0Level=1
 Passive1=
 Passive1Level=0
+
+; Disorders
+Disorder0=Incontinence
+Disorder1=
 ```
 
 ### 5. Install and test
