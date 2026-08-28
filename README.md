@@ -299,6 +299,16 @@ Passive1Level=0
 - `Passive0Level` and `Passive1Level` set the matching passive's upgrade level.
 - Leave the passive name blank for no passive in that slot.
 
+### Disorder keys
+
+```ini
+Disorder0=Incontinence
+Disorder1=
+```
+
+- `Disorder0` and `Disorder1` are disorder IDs.
+- Leave the disorder name blank for no disorder in that slot.
+
 ## Tutorial: Making your own custom stray mod
 
 This tutorial shows you how to create a standalone stray cat mod that depends on Custom Stray Framework.
