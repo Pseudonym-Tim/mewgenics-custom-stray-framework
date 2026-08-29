@@ -598,7 +598,7 @@ void LoadDebugSpawnConfig(void)
     }
 
     if (g_debugSpawnConfig.count < 0) g_debugSpawnConfig.count = 0;
-    if (g_debugSpawnConfig.count > (int32_t)CSF_MAX_DEBUG_EXPLICIT) g_debugSpawnConfig.count = (int32_t)CSF_MAX_DEBUG_EXPLICIT;
+    if (g_debugSpawnConfig.count > (int32_t)CSF_MAX_DEBUG_SPAWNS) g_debugSpawnConfig.count = (int32_t)CSF_MAX_DEBUG_SPAWNS;
 
     g_debugSpawnConfig.explicitCount = 0U;
 

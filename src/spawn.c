@@ -3,6 +3,7 @@
 #include "config.h"
 #include "mod_state.h"
 #include "string_utils.h"
+#include "spawn_coordinator.h"
 
 static volatile LONG g_isSpawning = 0;
 
@@ -610,63 +611,6 @@ int TriggerNativeHouseStrayGeneration(void)
 
 void TriggerDebugStraySpawn(void)
 {
-    int32_t spawnedCount;
-    uint32_t i;
-
-    LoadFrameworkConfig();
-    ReloadCustomStrayDefinitions();
-    LoadDebugSpawnConfig();
-
-    if (!g_debugSpawnConfig.enabled)
-    {
-        if (g_mj.Log)
-        {
-            g_mj.Log(MOD_NAME, "Debug spawn hotkey ignored because debug_spawns.ini has Enabled=0!");
-        }
-
-        return;
-    }
-
-    if (g_debugSpawnConfig.useNativeStraySpawn)
-    {
-        TriggerNativeHouseStrayGeneration();
-    }
-
-    if (g_debugSpawnConfig.mode == CSF_MODE_EXPLICIT_LIST)
-    {
-        spawnedCount = 0;
-
-        for (i = 0U; i < g_debugSpawnConfig.explicitCount && spawnedCount < g_debugSpawnConfig.count; ++i)
-        {
-            const CustomStrayDefinition* def = FindCustomStrayDefinition(g_debugSpawnConfig.explicitIds[i]);
-
-            if (def && SpawnCustomStrayAtHouse(def, (uint32_t)spawnedCount))
-            {
-                ++spawnedCount;
-            }
-            else if (g_mj.Log)
-            {
-                g_mj.Log(MOD_NAME, "Debug explicit cat id not found or failed: %s", g_debugSpawnConfig.explicitIds[i]);
-            }
-        }
-
-        return;
-    }
-
-    if (g_debugSpawnConfig.mode == CSF_MODE_ALL)
-    {
-        spawnedCount = 0;
-
-        for (i = 0U; i < g_strayRegistry.count && spawnedCount < g_debugSpawnConfig.count; ++i)
-        {
-            if (SpawnCustomStrayAtHouse(&g_strayRegistry.entries[i], (uint32_t)spawnedCount))
-            {
-                ++spawnedCount;
-            }
-        }
-
-        return;
-    }
-
-    SpawnWeightedFrameworkStraysAtHouse(NULL, g_debugSpawnConfig.count, 1);
+    // Actual game mutations are dispatched by the coordinator on the game thread...
+    QueueDebugStraySpawn();
 }

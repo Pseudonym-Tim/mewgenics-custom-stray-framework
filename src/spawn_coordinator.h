@@ -5,3 +5,5 @@
 void StartSpawnCoordinator(void);
 void StopSpawnCoordinator(void);
 void QueueNativeStrayAppend(void);
+void QueueDebugStraySpawn(void);
+void QueueConfigReload(void);
