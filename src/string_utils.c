@@ -90,7 +90,7 @@ int IsUnsetText(const char* value)
     return 0;
 }
 
-void SetCatDataNarrowSlot(NarrowString* destination, const char* text)
+static void SetCatDataNarrowSlotInternal(NarrowString* destination, const char* text, int normalizeUnsetText)
 {
     UINT_PTR gameBase;
     fn_init_narrow_string_from_literal initNarrowString;
@@ -112,11 +112,21 @@ void SetCatDataNarrowSlot(NarrowString* destination, const char* text)
     destroyNarrowString = (fn_destroy_narrow_string)(gameBase + (UINT_PTR)RVA_DESTROY_NARROW_STRING);
     destroyNarrowString(destination);
 
-    if (IsUnsetText(text))
+    if (!text || text[0] == '\0' || (normalizeUnsetText && IsUnsetText(text)))
     {
         InitSmallNarrowString(destination, "");
         return;
     }
 
     initNarrowString(destination, text);
+}
+
+void SetCatDataNarrowSlot(NarrowString* destination, const char* text)
+{
+    SetCatDataNarrowSlotInternal(destination, text, 1);
+}
+
+void SetCatDataNarrowSlotExact(NarrowString* destination, const char* text)
+{
+    SetCatDataNarrowSlotInternal(destination, text, 0);
 }

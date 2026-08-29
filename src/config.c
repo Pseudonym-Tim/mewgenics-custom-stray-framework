@@ -397,6 +397,13 @@ static void ReadCatDefinitionFromIni(const wchar_t* pathW, const wchar_t* sectio
         def->passiveLevels[i] = (int64_t)ReadIniIntFrom(pathW, sectionW, levelKeyW, (int32_t)def->passiveLevels[i]);
     }
 
+    for (i = 0U; i < CATDATA_DISORDER_COUNT; ++i)
+    {
+        wchar_t keyW[32];
+        _snwprintf_s(keyW, sizeof(keyW) / sizeof(keyW[0]), _TRUNCATE, L"Disorder%u", i);
+        ReadIniTextFrom(pathW, sectionW, keyW, def->disorderNames[i], def->disorderNames[i], sizeof(def->disorderNames[i]));
+    }
+
     if (def->enabled && def->weight > 0 && def->templateName[0] != '\0')
     {
         ++g_strayRegistry.count;

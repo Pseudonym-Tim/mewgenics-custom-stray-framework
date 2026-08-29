@@ -102,11 +102,11 @@ static void TryCustomizeNativeStrayCatData(CatData* cat)
 
     if (!def->safeMode)
     {
-        ApplyConfiguredStatsAbilitiesAndPassives(cat, def);
+        ApplyConfiguredGameplayData(cat, def);
     }
     else if (g_mj.Log)
     {
-        g_mj.Log(MOD_NAME, "SafeMode active for id=%s during ReplaceEach: skipped optional stats/abilities/personality writes!", def->id);
+        g_mj.Log(MOD_NAME, "SafeMode active for id=%s during ReplaceEach: skipped optional gameplay/personality writes!", def->id);
     }
 
     if (g_mj.Log)

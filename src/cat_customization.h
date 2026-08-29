@@ -5,4 +5,4 @@
 
 int ApplyNativeCustomCatTemplate(CatData* cat, const CustomStrayDefinition* def);
 void ApplyStrayMetadata(CatData* cat, const CustomStrayDefinition* def);
-void ApplyConfiguredStatsAbilitiesAndPassives(CatData* cat, const CustomStrayDefinition* def);
+void ApplyConfiguredGameplayData(CatData* cat, const CustomStrayDefinition* def);

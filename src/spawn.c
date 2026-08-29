@@ -206,11 +206,11 @@ static int SpawnCustomStrayAtHouseInternal(Scene* houseScene, Component* houseCo
 
     if (!def->safeMode)
     {
-        ApplyConfiguredStatsAbilitiesAndPassives(cat, def);
+        ApplyConfiguredGameplayData(cat, def);
     }
     else if (g_mj.Log)
     {
-        g_mj.Log(MOD_NAME, "SafeMode active for id=%s: skipped optional stats/abilities/personality writes!", def->id);
+        g_mj.Log(MOD_NAME, "SafeMode active for id=%s: skipped optional gameplay/personality writes!", def->id);
     }
 
     entity = sceneCreateEntity(houseScene);

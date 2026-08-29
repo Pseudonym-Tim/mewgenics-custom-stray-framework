@@ -269,7 +269,7 @@ void ApplyStrayMetadata(CatData* cat, const CustomStrayDefinition* def)
     }
 }
 
-void ApplyConfiguredStatsAbilitiesAndPassives(CatData* cat, const CustomStrayDefinition* def)
+void ApplyConfiguredGameplayData(CatData* cat, const CustomStrayDefinition* def)
 {
     uint8_t* catBase;
     uint32_t index;
@@ -318,5 +318,17 @@ void ApplyConfiguredStatsAbilitiesAndPassives(CatData* cat, const CustomStrayDef
     {
         SetCatDataNarrowSlot((NarrowString*)(catBase + CATDATA_PASSIVE_1_OFFSET), def->passiveNames[1]);
         *(int64_t*)(catBase + CATDATA_PASSIVE_1_LEVEL_OFFSET) = def->passiveLevels[1];
+    }
+
+    if (def->disorderNames[0][0] != '\0')
+    {
+        SetCatDataNarrowSlotExact((NarrowString*)(catBase + CATDATA_DISORDER_0_OFFSET), def->disorderNames[0]);
+        *(int64_t*)(catBase + CATDATA_DISORDER_0_LEVEL_OFFSET) = 1LL;
+    }
+
+    if (def->disorderNames[1][0] != '\0')
+    {
+        SetCatDataNarrowSlotExact((NarrowString*)(catBase + CATDATA_DISORDER_1_OFFSET), def->disorderNames[1]);
+        *(int64_t*)(catBase + CATDATA_DISORDER_1_LEVEL_OFFSET) = 1LL;
     }
 }

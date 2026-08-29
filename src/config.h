@@ -82,6 +82,7 @@ typedef struct CustomStrayDefinition
     char accessibleAbilities[CATDATA_ACCESSIBLE_ACTIVE_COUNT][CONFIG_TEXT_CAPACITY];
     char passiveNames[CATDATA_PASSIVE_COUNT][CONFIG_TEXT_CAPACITY];
     int64_t passiveLevels[CATDATA_PASSIVE_COUNT];
+    char disorderNames[CATDATA_DISORDER_COUNT][CONFIG_TEXT_CAPACITY];
 } CustomStrayDefinition;
 
 typedef struct CustomStrayRegistry
