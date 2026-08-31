@@ -309,6 +309,19 @@ Disorder1=
 - `Disorder0` and `Disorder1` are disorder IDs.
 - Leave the disorder name blank for no disorder in that slot.
 
+### Item/Equipment keys
+
+```ini
+Weapon=GlassShard
+Trinket=
+Head=
+Face=
+Neck=
+```
+
+- `Weapon`,  `Head`, etc. are equipment item IDs.
+- Leave the ID blank for no item in that slot.
+
 ## Tutorial: Making your own custom stray mod
 
 This tutorial shows you how to create a standalone stray cat mod that depends on Custom Stray Framework.
@@ -479,6 +492,13 @@ Passive1Level=0
 ; Disorders
 Disorder0=Incontinence
 Disorder1=
+
+; Items
+Weapon=GlassShard
+Trinket=
+Head=
+Face=
+Neck=
 ```
 
 ### 5. Install and test
