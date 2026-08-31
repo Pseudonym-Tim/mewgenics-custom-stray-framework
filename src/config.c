@@ -404,6 +404,16 @@ static void ReadCatDefinitionFromIni(const wchar_t* pathW, const wchar_t* sectio
         ReadIniTextFrom(pathW, sectionW, keyW, def->disorderNames[i], def->disorderNames[i], sizeof(def->disorderNames[i]));
     }
 
+    /*
+    * Equipment item keys use the same slot names as native character GON
+    * definitions. Empty/omitted values leave the native CatData slot alone...
+    */
+    ReadIniTextFrom(pathW, sectionW, L"Head", def->equipmentHead, def->equipmentHead, sizeof(def->equipmentHead));
+    ReadIniTextFrom(pathW, sectionW, L"Face", def->equipmentFace, def->equipmentFace, sizeof(def->equipmentFace));
+    ReadIniTextFrom(pathW, sectionW, L"Neck", def->equipmentNeck, def->equipmentNeck, sizeof(def->equipmentNeck));
+    ReadIniTextFrom(pathW, sectionW, L"Weapon", def->equipmentWeapon, def->equipmentWeapon, sizeof(def->equipmentWeapon));
+    ReadIniTextFrom(pathW, sectionW, L"Trinket", def->equipmentTrinket, def->equipmentTrinket, sizeof(def->equipmentTrinket));
+
     if (def->enabled && def->weight > 0 && def->templateName[0] != '\0')
     {
         ++g_strayRegistry.count;

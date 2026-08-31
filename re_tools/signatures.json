@@ -133,6 +133,14 @@
         ".text"
       ],
       "match_offset": 0
+    },
+    "RVA_EQUIPMENT_FROM_ITEM_NAME": {
+      "kind": "rva",
+      "pattern": "48 89 5C 24 08 4C 89 44 24 18 48 89 54 24 10 57 48 83 EC 30 49 8B D8 48 8B FA 33 C0",
+      "search_sections": [
+        ".text"
+      ],
+      "match_offset": 0
     }
   }
 }

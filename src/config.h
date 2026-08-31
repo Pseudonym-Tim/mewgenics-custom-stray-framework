@@ -84,6 +84,11 @@ typedef struct CustomStrayDefinition
     char passiveNames[CATDATA_PASSIVE_COUNT][CONFIG_TEXT_CAPACITY];
     int64_t passiveLevels[CATDATA_PASSIVE_COUNT];
     char disorderNames[CATDATA_DISORDER_COUNT][CONFIG_TEXT_CAPACITY];
+    char equipmentHead[CONFIG_TEXT_CAPACITY];
+    char equipmentFace[CONFIG_TEXT_CAPACITY];
+    char equipmentNeck[CONFIG_TEXT_CAPACITY];
+    char equipmentWeapon[CONFIG_TEXT_CAPACITY];
+    char equipmentTrinket[CONFIG_TEXT_CAPACITY];
 } CustomStrayDefinition;
 
 typedef struct CustomStrayRegistry

@@ -60,6 +60,41 @@ static void ApplyConfiguredAge(CatData* cat, const CustomStrayDefinition* def)
     *(int64_t*)((uint8_t*)cat + CATDATA_DEATH_DAY_OFFSET) = -1LL; // This should already be the set default value, but just in case...
 }
 
+static int ApplyConfiguredEquipmentItem(CatData* cat, UINT_PTR slotOffset, const char* itemName)
+{
+    UINT_PTR gameBase;
+    NarrowString itemNameString;
+    Equipment* destination;
+    fn_init_narrow_string_from_literal initNarrowString;
+    fn_destroy_narrow_string destroyNarrowString;
+    fn_equipment_from_item_name equipmentFromItemName;
+
+    if (!cat || IsUnsetText(itemName) || !g_mj.GetGameBase)
+    {
+        return 0;
+    }
+
+    gameBase = g_mj.GetGameBase();
+
+    if (!gameBase)
+    {
+        return 0;
+    }
+
+    initNarrowString = (fn_init_narrow_string_from_literal)(gameBase + (UINT_PTR)RVA_INIT_NARROW_STRING);
+    destroyNarrowString = (fn_destroy_narrow_string)(gameBase + (UINT_PTR)RVA_DESTROY_NARROW_STRING);
+    equipmentFromItemName = (fn_equipment_from_item_name)(gameBase + (UINT_PTR)RVA_EQUIPMENT_FROM_ITEM_NAME);
+    destination = (Equipment*)((uint8_t*)cat + slotOffset);
+
+    memset(&itemNameString, 0, sizeof(itemNameString));
+
+    destroyNarrowString((NarrowString*)((uint8_t*)destination + EQUIPMENT_OWNED_STRING_1_OFFSET));
+    destroyNarrowString((NarrowString*)((uint8_t*)destination + EQUIPMENT_OWNED_STRING_0_OFFSET));
+    initNarrowString(&itemNameString, itemName);
+    equipmentFromItemName(NULL, destination, &itemNameString);
+    return 1;
+}
+
 static void SetCatNameInline(CatData* cat, const char* name)
 {
     wchar_t nameW[CONFIG_TEXT_CAPACITY];
@@ -331,4 +366,10 @@ void ApplyConfiguredGameplayData(CatData* cat, const CustomStrayDefinition* def)
         SetCatDataNarrowSlotExact((NarrowString*)(catBase + CATDATA_DISORDER_1_OFFSET), def->disorderNames[1]);
         *(int64_t*)(catBase + CATDATA_DISORDER_1_LEVEL_OFFSET) = 1LL;
     }
+
+    ApplyConfiguredEquipmentItem(cat, CATDATA_EQUIPMENT_HEAD_OFFSET, def->equipmentHead);
+    ApplyConfiguredEquipmentItem(cat, CATDATA_EQUIPMENT_FACE_OFFSET, def->equipmentFace);
+    ApplyConfiguredEquipmentItem(cat, CATDATA_EQUIPMENT_NECK_OFFSET, def->equipmentNeck);
+    ApplyConfiguredEquipmentItem(cat, CATDATA_EQUIPMENT_WEAPON_OFFSET, def->equipmentWeapon);
+    ApplyConfiguredEquipmentItem(cat, CATDATA_EQUIPMENT_TRINKET_OFFSET, def->equipmentTrinket);
 }
